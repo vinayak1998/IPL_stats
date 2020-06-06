@@ -1,0 +1,79 @@
+<%- include ('partials/header.ejs'); -%>
+    <div class="btn-group">
+        <form action="/interesting_facts_bat" >
+             <button type="submit">Batting</button>
+        </form>
+        <form action="/interesting_facts_bowling" >
+             <button type="submit">Bowling</button>
+        </form>
+    </div>
+</br>
+</br>
+    <div class="btn-group">
+        <form action="/interesting_facts/wicket" >
+             <button type="submit">Most Wickets</button>
+        </form>
+        <form action="/interesting_facts/dot" >
+             <button type="submit">Most Dot Balls</button>
+        </form>
+        <form action="/interesting_facts/maiden" >
+             <button type="submit">Most Maiden Overs</button>
+        </form>
+        <form action="/interesting_facts/economy" >
+             <button type="submit">Lowest Economy</button>
+        </form>
+    </div>
+    <form class="add-player-form" action="" method="post" enctype="multipart/form-data">
+<!--         <div class="form-row">
+            <div class="form-group col-md-6">
+                <select id="selecttype" name="selecttype" class="form-control" required>
+                    <option selected disabled>Choose option</option>
+                    <option value = 'six' id ='1'>Most sixes</option>
+                    <option value = 'four' id ='2'>Most fours</option>
+                    <option value = 'fifty' id ='3'>Most fifties</option>
+                    <option value = 'wicket' id ='4'>Most wickets</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary float-right">select</button> -->
+    </form>
+    <div class="table-wrapper">
+        <% if (player.length > 0) {%>
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+            <table class="table table-hovered" id="myTable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Player Name</th>
+                        <th scope="col">Runs Given</th>
+                        <th scope="col">Wickets Taken</th>
+                        <th scope="col">Total Balls</th>
+                        <th scope="col">Total 6s</th>
+                        <th scope="col">Total 4s</th>
+                        <th scope="col">Total Matches</th>
+                        <th scope="col">Economy</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i < player.length; i++) { %>
+                    
+                        <tr>
+                            <th scope="row"><%= player[i].player_name %></th>
+                            <td><%= player[i].runs %></td>
+                            <td><%= player[i].wickets_taken %></td>
+                            <td><%= player[i].total_balls %></td>
+                            <td><%= player[i].total_six %></td>
+                            <td><%= player[i].total_four %></td>
+                            <td><%= player[i].matches %></td>
+                            <td><%= player[i].economy %></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No players found. Go <a href="/add" >here</a> to add players.</p>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>

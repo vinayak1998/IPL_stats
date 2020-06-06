@@ -1,0 +1,87 @@
+<%- include ('partials/header.ejs'); -%>
+    <div class="btn-group">
+        <form action="/batting_stats/sort_by_runs" >
+             <button type="submit">Sort by Runs</button>
+        </form>
+        <form action="/batting_stats/sort_by_tscore" >
+             <button type="submit">Sort by Top Score</button>
+        </form>
+        <form action="/batting_stats/sort_by_100" >
+             <button type="submit">Sort by 100s</button>
+        </form>
+        <form action="/batting_stats/sort_by_50" >
+             <button type="submit">Sort by 50s</button>
+        </form>
+        <form action="/batting_stats/sort_by_matches" >
+             <button type="submit">Sort by Matches</button>
+        </form>
+        <form action="/batting_stats/sort_by_6" >
+             <button type="submit">Sort by 6s</button>
+        </form>
+        <form action="/batting_stats/sort_by_4" >
+             <button type="submit">Sort by 4s</button>
+        </form>
+        <form action="/batting_stats/sort_by_strike" >
+             <button type="submit">Sort by Strike Rate</button>
+        </form>
+    </div>
+    <form class="add-player-form" action="/batting_stats/sort_by_runs_cond" method="post" enctype="multipart/form-data">
+        <div class="form-row">
+             <div class="form-group col-md-4"><h5>more than how much runs</h5>
+                    <input type="number" class="form-control" name="cond" id="cond" placeholder="select" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary float-right">Show</button>
+    </form>
+
+        
+    
+    <div class="table-wrapper">
+        <% if (player.length > 0) {%>
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+            <table class="table table-hovered" id="myTable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Batting Hand</th>
+                        <th scope="col">Runs</th>
+                        <th scope="col">max score</th>
+                        <th scope="col">100s</th>
+                        <th scope="col">50s</th>
+                        <th scope="col">Matches</th>
+                        <th scope="col">Average</th>
+                        <th scope="col">balls played</th>
+                        <th scope="col">sixes</th>
+                        <th scope="col">fours</th>
+                        <th scope="col">strike rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i < player.length; i++) { %>
+                    
+                        <tr>
+                            <th scope="row"><%= player[i].player_name %></th>
+                            <td><%= player[i].batting_hand %></td>
+                            <td><%= player[i].total_runs %></td>
+                            <td><%= player[i].top_score %></td>
+                            <td><%= player[i].hundreds %></td>
+                            <td><%= player[i].fiftys %></td>
+                            <td><%= player[i].matches %></td>
+                            <td><%= player[i].average %></td>
+                            <td><%= player[i].total_balls %></td>
+                            <td><%= player[i].total_six %></td>
+                            <td><%= player[i].total_four %></td>
+                            <td><%= player[i].strike_rate %></td>
+                        
+                            
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No players found. Go <a href="/add" >here</a> to add players.</p>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>

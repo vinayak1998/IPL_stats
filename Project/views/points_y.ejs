@@ -1,0 +1,77 @@
+<%- include ('partials/header.ejs'); -%>
+    <div class="btn-group">
+        <form action="/points/8" >
+             <button type="submit">2008</button>
+        </form>
+        <form action="/points/9" >
+             <button type="submit">2009</button>
+        </form>
+        <form action="/points/10" >
+             <button type="submit">2010</button>
+        </form>
+        <form action="/points/11" >
+             <button type="submit">2011</button>
+        </form>
+        <form action="/points/12" >
+             <button type="submit">2012</button>
+        </form>
+        <form action="/points/13" >
+             <button type="submit">2013</button>
+        </form>
+        <form action="/points/14" >
+             <button type="submit">2014</button>
+        </form>
+        <form action="/points/15" >
+             <button type="submit">2015</button>
+        </form>
+        <form action="/points/16" >
+             <button type="submit">2016</button>
+        </form>
+        <form action="/points/17" >
+             <button type="submit">2017</button>
+        </form>
+    </div>
+<!--     <form class="add-player-form" action="/batting_stats/sort_by_runs_cond" method="post" enctype="multipart/form-data">
+        <div class="form-row">
+             <div class="form-group col-md-4"><h5>more than how much runs</h5>
+                    <input type="number" class="form-control" name="cond" id="cond" placeholder="select" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary float-right">Show</button>
+    </form>
+ -->
+        
+    
+    <div class="table-wrapper">
+        <% if (player.length > 0) {%>
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+            <table class="table table-hovered" id="myTable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Team</th>
+                        <th scope="col">Matches Played</th>
+                        <th scope="col">Matches Won</th>
+                        <th scope="col">Matches Lost</th>
+                        <th scope="col">Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i < player.length; i++) { %>
+                    
+                        <tr>
+                            <th scope="row"><%= player[i].team1 %></th>
+                            <td><%= player[i].matches_played %></td>
+                            <td><%= player[i].matches_won %></td>
+                            <td><%= player[i].matches_lost %></td>
+                            <td><%= player[i].points %></td>            
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No players found. Go <a href="/add" >here</a> to add players.</p>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>

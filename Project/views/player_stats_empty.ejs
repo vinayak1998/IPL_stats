@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="/assets/css/custom.css">-->
+    <title><%= title %></title>
+</head>
+<style>
+    .table-wrapper {
+        margin-top: 50px;
+    }
+
+    .player-img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .add-player-form {
+        margin-top: 50px;
+    }
+</style>
+
+<body>
+<div class="page-wrapper">
+    <nav class="navbar navbar-light bg-light"></nav>
+</div>
+
+<div class="container">
+<form class="add-player-form" action="" method="post" enctype="multipart/form-data">
+  <div class="form-group col-md-6">
+ <select id="name" name="name" class="form-control" required>
+
+<% for(var i=0; i < aplayer.length; i++) { %>
+   <option><%= aplayer[i].player_name %></option>
+<% } %>
+</select>
+</div>
+
+</form>
+<form action="/showp" >
+<button type="submit" class="btn btn-primary float-right">Show</button>
+</form>
+</div>
+
+
+  
+  </body>
+  </html>      

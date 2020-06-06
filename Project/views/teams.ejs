@@ -1,0 +1,41 @@
+<%- include ('partials/header.ejs'); -%>
+    <form class="add-player-form" action="" method="post" enctype="multipart/form-data">
+        <!-- <div class="form-row">
+            <div class="form-group col-md-6">
+                <select id="selecttype" name="selecttype" class="form-control" required>
+                    <option selected disabled>Choose option</option>
+                    <option value = 'six' id ='1'>Most sixes</option>
+                    <option value = 'four' id ='2'>Most fours</option>
+                    <option value = 'fifty' id ='3'>Most fifties</option>
+                    <option value = 'wicket' id ='4'>Most wickets</option>
+                </select>
+            </div>
+        </div> -->
+        <button type="submit" class="btn btn-primary float-right">select</button>
+    </form>
+    <div class="table-wrapper">
+        <% if (player.length > 0) {%>
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+            <table class="table table-hovered" id="myTable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Team Name</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i < player.length; i++) { %>
+                    
+                        <tr>
+                            <th scope="row"><%= player[i].team_name %></th>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No players found. Go <a href="/add" >here</a> to add players.</p>
+        <% } %>
+    </div>
+</div>
+</body>
+</html> 

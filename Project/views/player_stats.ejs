@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--<link rel="stylesheet" href="/assets/css/custom.css">-->
+    <title><%= title %></title>
+</head>
+<style>
+    .table-wrapper {
+        margin-top: 50px;
+    }
+
+    .player-img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .add-player-form {
+        margin-top: 50px;
+    }
+</style>
+
+<body>
+<div class="page-wrapper">
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1" ><a href="/">IPL</a></span>
+    </nav>
+</div>
+<div class="btn-group">
+        <form action="\batting_stats" >
+             <button type="submit">Batting Stats</button>
+        </form>
+        <form action="\showp" >
+             <button type="submit">Player Stats</button>
+        </form>
+        <form action="\bowling_stats" >
+            <button type="submit">Bowling Stats</button>
+        </form>
+        <form action="\teams" >
+            <button type="submit">Teams</button>
+        </form>
+        <form action="\players" >
+            <button type="submit">Players</button>
+        </form>
+        <form action="\interesting_facts" >
+            <button type="submit">Interesting Facts</button>
+        </form>
+        <form action="\points" >
+            <button type="submit">Points Table</button>
+        </form>
+</div>
+<div class="container">
+<form class="add-player-form" action="" method="post" enctype="multipart/form-data">
+  <div class="form-group col-md-6">
+ <select id="name" name="name" class="form-control" required>
+<% for(var i=0; i < aplayer.length; i++) { %>
+   <option><%= aplayer[i].player_name %></option>
+<% } %>
+</select>
+</div>
+<form action="/showp" >
+<button type="submit" class="btn btn-primary float-right">Show</button>
+</form>
+</form>
+</div>
+
+      <div class="table-wrapper">
+        <% if (player &&  player.length > 0) {%>
+      </br>
+      </br>
+        <h4>Batting stats</h4>
+           <table class="table table-hovered" id="myTable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Player Name</th>
+                        <th scope="col">Batting Hand</th>
+                        <th scope="col">Runs</th>
+                        <th scope="col">max score</th>
+                        <th scope="col">100s</th>
+                        <th scope="col">50s</th>
+                        <th scope="col">Matches</th>
+                        <th scope="col">Average</th>
+                        <th scope="col">balls played</th>
+                        <th scope="col">sixes</th>
+                        <th scope="col">fours</th>
+                        <th scope="col">strike rate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i < player.length; i++) { %>
+                        <tr>
+                            <th scope="row"><%= player[i].player_name %></th>
+                            <td><%= player[i].batting_hand %></td>
+                            <td><%= player[i].total_runs %></td>
+                            <td><%= player[i].top_score %></td>
+                            <td><%= player[i].hundreds %></td>
+                            <td><%= player[i].fiftys %></td>
+                            <td><%= player[i].matches %></td>
+                            <td><%= player[i].average %></td>
+                            <td><%= player[i].total_balls %></td>
+                            <td><%= player[i].total_six %></td>
+                            <td><%= player[i].total_four %></td>
+                            <td><%= player[i].strike_rate %></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+            </br>
+            </br>
+            <h4>Bowling stats</h4>
+            <table class="table table-hovered" id="myTable">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Player Name</th>
+                        <th scope="col">Runs Given</th>
+                        <th scope="col">Wickets Taken</th>
+                        <th scope="col">Total Balls</th>
+                        <th scope="col">Total 6s</th>
+                        <th scope="col">Total 4s</th>
+                        <th scope="col">Total Matches</th>
+                        <th scope="col">Economy</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i < player2.length; i++) { %>
+                    
+                        <tr>
+                            <th scope="row"><%= player2[i].player_name %></th>
+                            <td><%= player2[i].runs %></td>
+                            <td><%= player2[i].wickets_taken %></td>
+                            <td><%= player2[i].total_balls %></td>
+                            <td><%= player2[i].total_six %></td>
+                            <td><%= player2[i].total_four %></td>
+                            <td><%= player2[i].matches %></td>
+                            <td><%= player2[i].economy %></td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No players found.</p>
+        <% } %>
+    </div>
+  
+  </body>
+  </html>      
