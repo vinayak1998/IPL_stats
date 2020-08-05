@@ -12,7 +12,7 @@
     "body-parser": "^1.19.0",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
-    "express-fileupload": "^1.1.6",
+    "express-fileupload": "^1.1.9",
     "mysql": "^2.18.1",
     "pg": "^7.18.2",
     "req-flash": "0.0.3"
